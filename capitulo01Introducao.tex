@@ -1,0 +1,48 @@
+\chapter{Introdução}
+\label{cap:01}
+
+
+O câncer pulmonar se tornou um dos maiores problemas de saúde mundial, situando-se entre as principais causas de mortes em vários países. A mortalidade por câncer está sempre crescendo e os motivos são complexos.O crescimento populacional, envelhecimento e desenvolvimento socioeconômico são fatores que contribuem para este aumento \cite{teste5}.
+
+Nos últimos anos houve um grande aumento no desenvolvimento de sistemas de detecção e diagnóstico, conhecidos como CADs, sendo cada vez mais utilizados para o auxílio ao diagnóstico médico. Estes tipos de sistemas realizam marcações em imagens, mostrando possíveis anomalias, servindo como um suporte aos médicos na decisão de diagnósticos \cite{teste6}.
+
+O sistema CAD podem ser divididos em dois subsistemas: CADe, subsistema capaz de analisar as imagens e detectar regiões suspeitas, revelando as anomalias e facilitando então a observação dos médicos; CADx , subsistema responsável por classificar as regiões previamente identificadas de acordo com seu tipo, gravidade e estágio \cite{VALENTE201691}.
+
+\citeonline{XIE2018102} testaram uma nova técnica para a classificação de nódulos pulmonares, utilizando a união da textura, forma e informações profundas do modelo aprendido (Fuse-TSD), o algoritmo é realizado de duas formas, sendo um treinamento online e offline, na primeira fase offline são extraídas as regiões de interesse de cada tomografias computadorizada (TC), na sequência é realizado o treinamento através da rede Deep convolutional neural network (DCNN) para extrair a textura, formas e usar os recursos extraídos para realizar o calculo dos pesos, então usando Back-Propagation Neural Networks (BPNN) para classificar. Na fase online, ocorre a extração de nódulos em fatia retirada da TC, aplica-se ao DCNN testado anteriormente para obtendo novas características profundas, textura e forma, na sequência são aplicadas ao classificador com suas respectivas características ao conjunto já treinado, então classificar o nódulo com base na etiqueta de cada fatia de nódulo. A técnica foi avaliada utilizando a base de dados The Lung Image Database Consortium (LIDC-IDRI) contendo 1018 exames e foi usado o esquema proposto por \citeonline{han} e \citeonline{Shen} onde a base de dados é subdividida de acordo com o grau de malignidade, um e dois é considerado nódulos benignos, quatro e cinco é considerado maligno e grau três não há certeza sobre benigno ou maligno. A subdivisão da base foi realizada em três grupos, grupo um contendo nódulos benignos indicados pelo grau um e dois e malignos quatro e cinco; O segundo grupo contendo como nódulos benignos nódulos de grau um, dois e três, e malignos de grau quatro e cinco; O terceiro grupo contendo como nódulos benignos nódulos de grau um e dois, e malignos de grau três, quatro e cinco. O resultado obtido para os grupos foram respectivamente AUC 96.65\%, 94.45\% e 81.24\%.
+
+\citeonline{shara}Apresentou uma nova abordagem baseada na matriz estrutural co-ocorrência (SCM) para realizar a classificação de nódulos pulmonares em benigno e maligno e realizar uma classificação ao nivel de malignidade. Inicialmente  é realizado uma extração dos nódulos pulmonares. A etapa seguinte são aplicadas diferentes configurações ao extrator SCM, sendo filtro Gaussiano, Laplaciano, Media e Sobel, identificando a melhor performance. Na etapa seguinte de classificação os dados que foram gerados são pré-processador e passados aos classificadores perceptron multicamadas (MLP), o vetor de suporte máquina (SVM) e os algoritmos de k-vizinhos mais próximos (k-NN), realizando então o treinamento da rede neural e realizando o teste nos dados. O desempenho foi testado utilizando a base de dados LIDC-IDRI e atingiu 96.7\% para as métricas de precisão e F-Score na primeira tarefa, e 74: 5\% de precisão e 53.2\% F-Score na segunda.
+
+
+Apesar desse método ter obtido grandes resultados, uma parte das TC, não foi utilizada para realização da classificação, sendo os nódulos classificados como $ < 3 mm$.Com isso tem-se a necessidade de classificação de todos os nódulos.
+
+Neste contexto este trabalho tem o objetivo de construir um método automático para realizar a classificação dos nódulos pulmonares em tomografias computadorizadas TC do tórax, buscando extrair mais informações da base de dados  LIDC-IDRI que possa ser utilizado para a melhoria dos classificadores já existente junto com a aplicação de redes neurais convolucionais.
+
+O método proposto será avaliado na base The Lung Image Database Consortium (LIDC-IDRI), tendo um total de 1018 exames de TC do tórax para detecção e diagnóstico de câncer do pulmão com lesões. A elaboração dessa base de dados foi realizada por uma equipe de quatro radiologistas experientes e o processo foi dividido em duas fases, a primeira "vista às cegas", cada radiologista individualmente realizou uma revisão em cada exame identificando as lesões e classificando-os em três categorias: nódulo $\geq$ 3 mm, nódulo  $< 3$ mm e não nódulo $\geq$ 3 mm; Na segunda fase, chamada de "vista não cega" são apresentados os resultados da primeira fase para cada radiologista permitindo então uma nova revisão em nódulos classificados como $\geq$ 3 mm e nódulo  $< 3$ mm, sendo os classificados como não nódulos opcional para revisão, não foi formado um consenso final, ou seja, existem nódulos na base que foram apontados por somente um radiologista \cite{teste2}.
+
+%\section{Justificativa}
+
+%Texto da justificativa.
+
+\section{Objetivos}
+
+\subsection{Objetivo Geral}
+
+Este trabalho tem como objetivo desenvolver um método automático para classificação de nódulos pulmonares em imagens de TC do tórax, usando técnicas de processamento digital de imagens para realizar o pré-processamento das imagens e redes neurais convolucionais para a classificação. 
+%Qual seu objetivo geral.
+
+\subsection{Objetivos Específicos}
+
+Para realizar este trabalho os seguintes objetivos específicos foram estipulados:
+
+\begin{itemize}
+	\item realizar a leitura dos exames em formato DICOM e das anotações de nódulos em formato XML para as bases de imagens LIDC-IDRI;
+	\item propor uma técnica para realizar a média das características de malignidade extraídas através do padrão ouro. 
+	\item realizar a classificação de nódulos pulmonares em todos os exames das bases de imagens LIDC-IDRI;
+\end{itemize}
+
+
+
+%\section{Organização Deste Trabalho}
+
+%Como seu trabalho está organizado (capítulos).
+%\cleardoublepage
